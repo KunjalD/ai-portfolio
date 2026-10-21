@@ -1,0 +1,73 @@
+# Day 2 — Python for AI Engineering
+
+## 1. Async/Await - Concept: async def defines a coroutine. await waits for an asynchronous operation to complete without blocking the event loop.
+
+Concept:
+What I learned: Async functions are useful for I/O operations such as calling an LLM API or querying a database.
+
+Reference: https://docs.python.org/3.12/library/asyncio-task.html#coroutines
+
+Code:
+examples/async_example.py
+
+Run:
+python .\learning\week2\async_example.py
+
+Result:
+Answer to: What is RAG?
+
+## 2. Protocol
+
+Concept:
+Protocols define a common interface.
+
+Code:
+examples/protocol_example.py
+
+Run:
+python examples/protocol_example.py
+
+Result:
+Not tested yet.
+
+## 3. Pydantic
+
+Concept:
+Pydantic validates data using Python types and constraints.
+
+Code:
+examples/pydantic_example.py
+
+Run:
+python examples/pydantic_example.py
+
+Result:
+Not tested yet.
+
+## 4. Conversation State
+
+Concept:
+Conversation history maintains previous messages.
+
+Code:
+examples/conversation_example.py
+
+Run:
+python examples/conversation_example.py
+
+Result:
+Not tested yet.
+
+## 5. pytest monkeypatch
+
+Concept:
+Monkeypatch replaces dependencies during testing.
+
+Code:
+tests/test_monkeypatch_example.py
+
+Run:
+python -m pytest .\learning\week2\tests\test_monkeypatch_example.py -v
+
+Result:
+PASSED

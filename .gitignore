@@ -3,4 +3,4 @@ venv/
 .env
 .env.*
 __pycache__/
-.pytest_cache/
+.pytest_cache/2

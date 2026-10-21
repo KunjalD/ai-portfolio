@@ -16,47 +16,59 @@ python .\learning\week2\async_example.py
 Result:
 Answer to: What is RAG?
 
-## 2. Protocol
+## 2. Protocol - Defining a common interface
 
-Concept:
-Protocols define a common interface.
+Concept: A Protocol specifies the methods an object must provide without requiring inheritance.
+What I learned: Protocols allow different implementations, such as a fake provider for testing and a real OpenAI provider, to share the same interface.
 
-Code:
-examples/protocol_example.py
-
-Run:
-python examples/protocol_example.py
-
-Result:
-Not tested yet.
-
-## 3. Pydantic
-
-Concept:
-Pydantic validates data using Python types and constraints.
+Reference: https://docs.python.org/3.12/library/typing.html#typing.Protocol
 
 Code:
-examples/pydantic_example.py
+learning\week2\protocol_example.py
 
 Run:
-python examples/pydantic_example.py
+python .\learning\week2\protocol_example.py
 
 Result:
-Not tested yet.
+Fake response: Hello
 
-## 4. Conversation State
+## 3. Pydantic - Validating data
 
-Concept:
-Conversation history maintains previous messages.
+Concept: Pydantic validates input using Python type annotations and field constraints.
+What I learned: Pydantic helps prevent invalid data from entering an application. min_length=1 rejects empty strings but not whitespace-only strings.
+
+Reference: https://docs.pydantic.dev/latest/concepts/fields/
 
 Code:
-examples/conversation_example.py
+learning\week2\pydantic_example.py 
 
 Run:
-python examples/conversation_example.py
+python .\learning\week2\pydantic_example.py 
 
 Result:
-Not tested yet.
+{'role': 'user', 'content': 'Hello'}
+Validation failed
+
+## 4. Conversation State — Remembering previous messages
+
+Concept: A chatbot can maintain conversation context by sending previous messages along with the new message.
+What I learned: Conversation history must be maintained explicitly when managing state manually. Storing history alone does not prove that an LLM remembers it; the history must also be supplied in the API request.
+
+Reference: https://platform.openai.com/docs/guides/conversation-state
+
+Code:
+learning/week2/conversation_example.py
+
+Run:
+python .\learning\week2\conversation_example.py
+
+Result:
+{'role': 'user', 'content': 'My favorite color is blue'}
+{'role': 'assistant', 'content': 'Got it!'}
+{'role': 'user', 'content': 'What is my favorite color?'}
+
+Expected result: Three messages are printed in chronological order.
+
 
 ## 5. pytest monkeypatch
 

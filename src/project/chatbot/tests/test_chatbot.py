@@ -4,6 +4,7 @@ from pydantic import ValidationError
 from project.chatbot.src.chatbot import ChatSession, FakeProvider, Message, chat
 import pytest
 from project.chatbot.src.openai_provider import OpenAIProvider, FakeClient
+from project.chatbot.src.pdf_extractor import extract_pdf_text
 
 def test_chat_stores_both_messages():
     session = ChatSession()
@@ -74,4 +75,11 @@ def test_openai_provider_receives_conversation_history():
     assert fake_client.responses.last_input[1]["content"] == "RAG combines retrieval with generation."
     assert fake_client.responses.last_input[2]["role"] == "user"
     assert fake_client.responses.last_input[2]["content"] == "Explain it with an example?"
+
+def test_pdf_extraction():
+    pdf_path = "src/project/chatbot/data/circulars/circ01.pdf"  
+    extracted_text = extract_pdf_text(pdf_path)
     
+    assert isinstance(extracted_text, str)
+    assert "Copyright Basics" in extracted_text  
+    assert len(extracted_text) > 1000  
